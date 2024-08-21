@@ -158,6 +158,9 @@ export default function Catering() {
             </p>
           )}
           <div className='max-w-4xl mx-auto p-3 my-7'>
+            <p className='mb-4 text-2xl font-semibold text-black'>
+              {catering.name}
+            </p>
             <div className='flex items-center gap-4 mb-4'>
               <FaMapMarkerAlt className='text-green-700 text-2xl' />
               <p className='text-slate-600 text-sm'>{catering.address}</p>
@@ -228,7 +231,7 @@ export default function Catering() {
               </div>
             )}
             {currentUser && catering.userRef !== currentUser._id && !contact && (
-              <div className="flex gap-2">
+              <div className="flex gap-2 mt-4 mb-4">
                 <button onClick={handleAddToCart} className='bg-blue-700 text-white rounded-lg uppercase hover:opacity-95 p-3'>
                   Add to Cart
                 </button>

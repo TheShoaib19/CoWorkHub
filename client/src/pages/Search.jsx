@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import ListingItem from "../components/ListingItem";
 import CateringItem from "../components/CateringItem";
 
@@ -88,10 +88,12 @@ export default function Search() {
             const filteredListings = filterListingsByAmenities(data, amenitiesFromUrl);
             if (data.length < 9) {
                 setShowMore(false);
+            }else {
+                setShowMore(true);
             }
+            //Ye else maine dala hai
 
             setListings(filteredListings);
-            console.log(listings);
             setLoading(false);
         };
 
@@ -261,6 +263,12 @@ export default function Search() {
                 <div className="p-7 border-b-2 md:border-r-2 md:min-h-screen max-w-[350px]">
                     <form onSubmit={handleSubmit}>
                         <div className="flex flex-col gap-2">
+                            <div className='my-3'>
+                                <h2 className='text-xl font-semibold text-slate-600'>Looking for event spaces?</h2>
+                                <Link className='text-md text-blue-800 hover:underline' to={'/search'}>
+                                    Click here to explore them.
+                                </Link>
+                            </div>
                             <div className="flex gap-2 items-center">
                                 <label className="font-semibold">Name:</label>
                                 <input
@@ -300,14 +308,20 @@ export default function Search() {
                                 />
                             </div>
                         </div>
-                        <button type="submit" className="p-3 border rounded-lg bg-black text-white">Search</button>
+                        <button type="submit" className="mt-4 p-3 border rounded-lg bg-blue-500 text-white">Search</button>
                     </form>
                 </div>
             ) : (
                 <div className="p-7 border-b-2 md:border-r-2 md:min-h-screen max-w-[350px]">
                     <form onSubmit={handleSubmit}>
                         <div className="flex flex-col gap-2">
-                            {/* <div className="flex gap-2 items-center">
+                            <div className='my-3'>
+                                    <h2 className='text-xl font-semibold text-slate-600'>Looking for catering services?</h2>
+                                    <Link className='text-md text-blue-800 hover:underline' to={'/search?type=catering'}>
+                                        Click here to explore them.
+                                    </Link>
+                                </div>
+                            <div className="flex gap-2 items-center">
                                 <label className="font-semibold">Search:</label>
                                 <input
                                     type="text"
@@ -316,7 +330,7 @@ export default function Search() {
                                     onChange={handleChange}
                                     className="border rounded-lg p-3"
                                 />
-                            </div> */}
+                            </div> 
                 
                             <div className="flex gap-2 items-center">
                                 <label className="font-semibold">Sort:</label>
@@ -369,7 +383,7 @@ export default function Search() {
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" className="p-3 border rounded-lg bg-black text-white">Search</button>
+                        <button type="submit" className="mt-4 p-3 border rounded-lg bg-blue-500 text-white">Search</button>
                     </form>
                 </div>
             )}
